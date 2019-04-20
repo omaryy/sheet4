@@ -1,0 +1,237 @@
+
+public class doubblyLinkedlist {
+
+	private ListNode head;
+	private ListNode tail;
+	private int length;	
+private static class ListNode
+{
+	private int data;
+	private ListNode perivious;
+	private ListNode next;
+	public ListNode (int data)
+	{
+		this.data=data;
+	}
+	
+}
+public doubblyLinkedlist ()
+{
+	tail=null;
+	head=null;
+	length=0;
+	
+	
+}
+
+public boolean isempty	()
+{
+return length==0;
+}
+public int length ()
+{
+	return length;
+}	
+
+public void addat (int index,ListNode node)
+{
+ListNode current =head;
+ListNode prev =head.next;
+for (int i=0;i<index-1 ;i++)
+{
+current=current.next;	
+prev=prev.next;
+}
+current.next=node;
+prev.perivious=node;
+node.perivious=current;
+node.next=prev;
+	
+	
+}
+
+public void insertatend (int data)
+{
+	ListNode newnode=new ListNode(data);
+	if (isempty())
+	{
+		head=newnode;
+	}
+	else
+	{
+		tail.next=newnode;
+		newnode.perivious=tail;
+		
+	}
+	tail=newnode;
+	
+}
+public ListNode get (int index)
+{
+ListNode current=head;
+for (int i=0;i<index;i++)
+{
+current=current.next;	
+}
+	
+	return current;
+}
+
+public void insertbeginning (int data)
+{
+ListNode newnode= new ListNode(data);
+if (isempty())
+{
+	tail=newnode;
+}
+else
+{
+	head.perivious=newnode;
+}
+	newnode.next=head;
+	head=newnode;
+	length++;
+}
+public void set (int index ,ListNode node)
+{
+	ListNode current=head;
+	ListNode prev=head.next;
+	if (index==0)
+	{
+		head=node;
+		prev.perivious=node;
+		node.next=prev;
+		current.next=null;
+		
+	}
+	else {
+
+for (int i=0;i<index-1;i++)
+{
+	current=current.next;
+prev=prev.next;
+}
+	
+current.next=node;
+node.perivious=current;
+node.next=prev.next;
+prev.next=null;
+prev.perivious=null;
+	}
+	
+}
+
+public int size ()
+{
+ListNode current=head;
+int count=0;
+while (current!=null)
+{
+current=current.next;
+	count++;	
+}
+	
+return count;
+	
+}
+public ListNode deletlast()
+{
+ListNode temp=tail;
+if (head==tail)
+{
+	head=null;
+}
+else 
+{
+	tail.perivious.next=null;	
+}
+tail=tail.perivious;
+temp.perivious=null;
+length--;
+return temp;
+}
+public void clear()
+{
+	ListNode current=tail;
+	int count=size();
+	while (count!=0)
+	{
+		current=current.perivious;
+		deletlast();
+		count--;
+		
+	}		
+}
+
+public  void deletfirst()
+{
+	ListNode temp=head;
+	if (head==tail)
+	{
+	tail =null;
+		
+	}
+	else {
+		
+		head.next.perivious=null;
+	}
+	head=head.next;
+	temp.next=null;	
+}
+public void remove (int index)
+{
+ListNode current=head;
+ListNode prev =head.next;
+if (index==0)
+{
+	deletfirst();
+}
+else {
+for (int i=0;i<index;i++)
+{
+current=current.next;
+prev=prev.next;
+	
+}
+current.next=prev.next;
+prev.next.perivious=current;
+prev.next=null;
+prev.perivious=null;
+}		
+}
+
+
+public ListNode sublist (int fromindex ,int toindex)
+{
+ListNode current=head;
+for (int i=0;i<fromindex;i++)
+{
+	current=current.next;
+}
+for (int i=fromindex;i<toindex+1;i++)
+{
+	
+	System.out.print(current.data+"-->");
+	current=current.next;
+	
+}
+	return head;
+	
+	
+}
+	public boolean contain (ListNode node)
+	{
+	ListNode current =head;
+	while (current!=null)
+	{
+		if (current.data==node.data)
+			return true;
+		
+	}
+		
+	return false;	
+		
+		
+	}
+	
+}
