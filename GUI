@@ -1,0 +1,18 @@
+
+import javax.swing.JOptionPane;
+public class data {
+
+	public static void main(String[] args) {
+		String n=JOptionPane.showInputDialog("please chosse an action");
+		String n2=JOptionPane.showInputDialog("1-set a polynomial variable");
+		String n3=JOptionPane.showInputDialog("2-print the value of the polynomial variable");
+		String n4=JOptionPane.showInputDialog("3-add two polynomials");
+		String n5=JOptionPane.showInputDialog("4-subtract two polynomials");
+		String n6=JOptionPane.showInputDialog("5-multiply two polynomials");
+		String n7=JOptionPane.showInputDialog("6-evaluate a polynomial at some point");
+		String n8=JOptionPane.showInputDialog("7- clear apolynomial variable\r\n");
+		
+
+	}
+
+}
